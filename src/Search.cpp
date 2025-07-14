@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "search/linear.cpp"
+#include "search/expo.cpp"
 #include "search/binary.cpp"
 #include <chrono>
 
@@ -16,7 +16,7 @@ void Search(vector<int> &arr, bool &sorted)
 
         cout << "(SEARCH) Choose Algorithm:" << endl
              << endl;
-        cout << "1. Linear Search" << endl
+        cout << "1. Exponential Search" << endl
              << "2. Binary Search" << endl
              << "3. Back" << endl
              << endl;
@@ -35,10 +35,10 @@ void Search(vector<int> &arr, bool &sorted)
             cout << "Exiting the Searching ";
             break;
         }
-        else if (operation == 1)
+        else if (operation == 1 && sorted == true)
         {
             auto start = high_resolution_clock::now();
-            LinearSearch(arr);
+            Exponential(arr);
             auto end = high_resolution_clock::now();
             auto duration = duration_cast<microseconds>(end - start);
             cout << "Duration Taken: " << duration.count() << " milisecond" << endl;
