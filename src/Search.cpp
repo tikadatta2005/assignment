@@ -2,8 +2,10 @@
 #include <vector>
 #include "search/linear.cpp"
 #include "search/binary.cpp"
+#include <chrono>
 
 using namespace std;
+using namespace chrono;
 
 void Search(vector<int> &arr, bool &sorted)
 {
@@ -35,11 +37,19 @@ void Search(vector<int> &arr, bool &sorted)
         }
         else if (operation == 1)
         {
+            auto start = high_resolution_clock::now();
             LinearSearch(arr);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(end - start);
+            cout << "Duration Taken: " << duration.count() << " milisecond" << endl;
         }
         else if (operation == 2 && sorted == true)
         {
+            auto start = high_resolution_clock::now();
             BinarySearch(arr);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(end - start);
+            cout << "Duration Taken: " << duration.count() << " milisecond" << endl;
         }
         else
         {
